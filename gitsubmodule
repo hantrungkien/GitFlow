@@ -1,18 +1,32 @@
-- add module: git submodule add @repo @path
+- Add module
 
-- add all modules in .gitmodules:
+```
+git submodule add @repo @path
+```
 
-1. git submodule sync --recursive
-2. git submodule update --init --recursive
+- Add all modules in .gitmodules
+
+```
+git submodule sync --recursive
+
+git submodule update --init --recursive
 
 git pull origin develop && git submodule foreach --recursive git pull origin develop
 
 git submodule foreach git checkout develop
 
 git submodule foreach git pull
+```
 
-- delete submodule
+- Checkout a branch on all modules
 
+```
+git submodule foreach "(git checkout branch_name; git pull)&"
+```
+
+- Delete submodule
+
+```
 1. rm -rf [path_sub_module]
 
 2. git rm -r [path_sub_module]
@@ -24,3 +38,4 @@ git submodule foreach git pull
 5. git rm --cached [path_sub_module]
 
 6. rm -rf .git/modules/[path_sub_module]
+```
